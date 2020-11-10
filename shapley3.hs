@@ -62,10 +62,7 @@ calcWeight elem = map (\x -> (x ,transferVal/cardVal)) $ chain elem
   where transferVal = transfer elem
         cardVal = card elem
 
-filterPath :: [Path] -> [Path]
-filterPath x = filter (not . null . chain) $ filter ((/= 0) .transfer) x
-
-testFunc x = Data.Map.fromListWith (+) x
+filterPath path = filter (not . null . chain) $ filter ((/= 0) . transfer) path
 
 emptyList :: [a] -> Bool
 emptyList (chain:transfers:end) = False
